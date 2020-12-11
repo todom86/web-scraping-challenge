@@ -63,7 +63,7 @@ def scrape():
     url = "https://astrogeology.usgs.gov"
     scrape_url = "/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
 
-    browser.visit(url)
+    browser.visit(url + scrape_url)
 
     links = browser.find_by_css("div.description a.itemLink")
 
@@ -75,7 +75,7 @@ def scrape():
         
         dict = {}
         
-        browser.visit(url)
+        browser.visit(url + scrape_url)
         browser.find_by_css("div.description a.itemLink")[x].click()
         
         html = browser.html

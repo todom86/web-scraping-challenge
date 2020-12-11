@@ -17,9 +17,11 @@
           <p>Home of the Martians</p>
           <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
     </div>
-    <img src="{{ mars.featured_img_url }}" alt="Featured Image">
+    <img src='{{ mars.featured_img_url }}' alt="Featured Image">
     <h2>{{ mars.news_title }}</h2>
     <p>{{ mars.news_p }}</p>
-    {{ mars.mars_facts | safe }}
+    <div>
+        {{ mars.mars_facts | safe }}
+    </div>
     
 </body>
