@@ -7,21 +7,46 @@
     <!-- <link rel="stylesheet" href="reset.css"> -->
     <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body>
 
     <div class="container-fluid">
-        <div class="jumbotron text-center">
-          <h1>Welcome to Mars!</h1>
-          <p>Home of the Martians</p>
-          <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+        <div class="row">
+            <div class="jumbotron text-center col-lg-12">
+                <h1>Welcome to Mars!</h1>
+                <p>Home of the Martians</p>
+                <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12" style="padding: 15px;">
+                <img src="{{ mars.featured_image_url }}" alt="Featured Image" class="center">
+            </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-6 col-sm-12 float-right" style="padding: 15px;">
+                <h2>{{ mars.news_title }}</h2>
+                <p>{{ mars.news_p }}</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 float-left" style="padding: 15px;">
+                {{ mars.mars_facts | safe }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Mars' Hemispheres</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for item in mars.hemisphere_urls %}
+            <div class="col-lg-6 col-md-12" style="padding: 15px;">
+                <h3 class="text-center">{{ item.title }}</h3>
+                <img src="{{ item.img_url }}" alt="{{ item.title}}" class="center">
+            </div>
+            {% endfor %}
+        </div>
     </div>
-    <img src='{{ mars.featured_img_url }}' alt="Featured Image">
-    <h2>{{ mars.news_title }}</h2>
-    <p>{{ mars.news_p }}</p>
-    <div>
-        {{ mars.mars_facts | safe }}
-    </div>
-    
+
 </body>
